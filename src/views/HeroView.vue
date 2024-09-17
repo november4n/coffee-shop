@@ -71,12 +71,11 @@
   </main>
 </template>
 
-
 <script>
-import NavBarComponent from '@/components/NavBarComponent.vue';
-import ProductCard from '@/components/ProductCard.vue';
+  import NavBarComponent from '@/components/NavBarComponent.vue';
+  import ProductCard from '@/components/ProductCard.vue';
 
   export default {
-    components: {NavBarComponent, ProductCard}
+    components: { NavBarComponent, ProductCard }
   }
 </script>
