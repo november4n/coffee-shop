@@ -68,10 +68,10 @@
               <product-card
                 v-for="card in coffee"
                 :key="card.id"
-                classItem= "shop__item"
                 :title="card.title"
                 :price="card.price"
                 :img="card.img"
+                :country="card.country"
               />
             </div>
           </div>

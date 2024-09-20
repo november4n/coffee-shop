@@ -1,9 +1,9 @@
 <template>
   <div :class="classItem">
     <img :src="require(`@/assets/img/${img}`)" :alt="img" />
-    <div class="best__item-title">{{ title }}</div>
-    <div v-if="country" class="best__item-country">{{ country }}</div>
-    <div class="best__item-price">{{ price }}$</div>
+    <div :class="classItemTitle">{{ title }}</div>
+    <div v-if="country" :class="classItemCountry">{{ country }}</div>
+    <div :class="classItemPrice">{{ price }}$</div>
   </div>
 </template>
 
@@ -22,13 +22,29 @@
         type: String,
         required: true,
       },
-      classItem: {
-        type: String,
-        required: false,
-      },
       country: {
         type: String,
         required: false,
+      },
+      classItem: {
+        type: String,
+        required: false,
+        default: "shop__item"
+      },
+      classItemTitle: {
+        type: String,
+        required: false,
+        default: "shop__item-title"
+      },
+      classItemCountry: {
+        type: String,
+        required: false,
+        default: "shop__item-country"
+      },
+      classItemPrice: {
+        type: String,
+        required: false,
+        default: "shop__item-price"
       },
     }
   }

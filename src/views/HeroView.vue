@@ -67,6 +67,8 @@
                 :title="card.title"
                 :price="card.price"
                 :img="card.img"
+                classItemTitle="best__item-title"
+                classItemPrice="best__item-price"
               />
             </div>
           </div>
