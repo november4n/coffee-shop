@@ -39,22 +39,22 @@
             icon: "Logo.svg",
           },
           other: [
-          {
-            id: 1,
-            text: "Our coffee",
-            link: "/our-coffee",
-          },
-          {
-            id: 2,
-            text: "For your pleasure",
-            link: "/for-your-pleasure",
-          },
-          {
-            id: 3,
-            text: "Contact us",
-            link: "/contacts",
-          },
-        ],
+            {
+              id: 1,
+              text: "Our coffee",
+              link: "/our-coffee",
+            },
+            {
+              id: 2,
+              text: "For your pleasure",
+              link: "/for-your-pleasure",
+            },
+            {
+              id: 3,
+              text: "Contact us",
+              link: "/contacts",
+            },
+          ],
         }
       };
     },
