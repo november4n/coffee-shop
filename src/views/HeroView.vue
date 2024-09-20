@@ -9,7 +9,7 @@
         </div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <title-component :title="title"/>
+            <title-component :title="title" />
             <img
               class="beanslogo"
               src="@/assets/logo/Beans_logo.svg"
@@ -19,13 +19,18 @@
               We makes every day full of energy and taste
             </div>
             <div class="preview__subtitle">Want to try our beans?</div>
-            <a href="./coffeepage.html" class="preview__btn">More</a>
+            <a
+              href="./coffeepage.html"
+              class="preview__btn"
+              @click.prevent="smoothScroll"
+              >More</a
+            >
           </div>
         </div>
       </div>
     </div>
 
-    <section class="about">
+    <section class="about" id="about" ref="about">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 offset-lg-3">
@@ -56,7 +61,7 @@
     </section>
     <section class="best">
       <div class="container">
-        <div class="title">Our best</div>
+        <div class="title" ref="ourBest">Our best</div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
@@ -79,39 +84,49 @@
 </template>
 
 <script>
-  import NavBarComponent from '@/components/NavBarComponent.vue';
-  import ProductCard from '@/components/ProductCard.vue';
-  import TitleComponent from '@/components/TitleComponent.vue';
+import NavBarComponent from '@/components/NavBarComponent.vue';
+import ProductCard from '@/components/ProductCard.vue';
+import TitleComponent from '@/components/TitleComponent.vue';
 
-  import { v4 as uuidv4 } from 'uuid';
+import { scrollIntoView } from "seamless-scroll-polyfill";
 
-  export default {
-    components: { NavBarComponent, ProductCard, TitleComponent },
-    data() {
-      return {
-        title: 'Everything You Love About Coffee',
-        bestsellers: [
-          {
-            id: uuidv4(),
-            img: 'coffee-1.jpg',
-            title: 'Solimo Coffee Beans 2kg',
-            price: '10.73'
-          },
-          {
-            id: uuidv4(),
-            img: 'coffee-2.jpg',
-            title: 'Presto Coffee Beans 1kg',
-            price: '15.99'
-          },
-          {
-            id: uuidv4(),
-            img: 'coffee-3.jpg',
-            title: 'AROMISTICO Coffee 1kg',
-            price: '6.99'
-          },
-        ]
-      }
+import { v4 as uuidv4 } from 'uuid';
+
+export default {
+  components: { NavBarComponent, ProductCard, TitleComponent },
+  data() {
+    return {
+      title: 'Everything You Love About Coffee',
+      bestsellers: [
+        {
+          id: uuidv4(),
+          img: 'coffee-1.jpg',
+          title: 'Solimo Coffee Beans 2kg',
+          price: '10.73'
+        },
+        {
+          id: uuidv4(),
+          img: 'coffee-2.jpg',
+          title: 'Presto Coffee Beans 1kg',
+          price: '15.99'
+        },
+        {
+          id: uuidv4(),
+          img: 'coffee-3.jpg',
+          title: 'AROMISTICO Coffee 1kg',
+          price: '6.99'
+        },
+      ]
     }
-  }
+  },
+  methods: {
 
+    smoothScroll() {
+      scrollIntoView(this.$refs.ourBest, {
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  },
+}
 </script>
