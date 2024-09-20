@@ -7,7 +7,7 @@
             <nav-bar-component />
           </div>
         </div>
-        <h1 class="title-big">Our Coffee</h1>
+        <title-component :title="title" />
       </div>
     </div>
     <section class="shop">
@@ -84,13 +84,15 @@
 <script>
   import NavBarComponent from "@/components/NavBarComponent.vue";
   import ProductCard from "@/components/ProductCard.vue";
+  import TitleComponent from '@/components/TitleComponent.vue';
 
   import { v4 as uuidv4 } from 'uuid';
 
   export default {
-    components: { NavBarComponent, ProductCard },
+    components: { NavBarComponent, ProductCard, TitleComponent },
     data() {
       return {
+        title: 'Our Coffee',
         coffee: [
           {
             id: uuidv4(),
