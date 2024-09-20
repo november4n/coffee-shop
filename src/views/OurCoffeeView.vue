@@ -97,14 +97,14 @@
             img: 'coffee-3.jpg',
             title: 'Solimo Coffee Beans 2kg',
             country: 'Brazil',
-            price: '10.73'
+            price: 10.73
           },
           {
             id: uuidv4(),
             img: 'coffee-3.jpg',
             title: 'Presto Coffee Beans 1kg',
             country: 'Brazil',
-            price: '15.99'
+            price: 15.99
           },
           {
             id: uuidv4(),
@@ -118,21 +118,21 @@
             img: 'coffee-3.jpg',
             title: 'Solid Coffee Beans 2kg',
             country: 'Brazil',
-            price: '8.73'
+            price: 8.73
           },
           {
             id: uuidv4(),
             img: 'coffee-3.jpg',
             title: 'Movep Coffee Beans 1kg',
             country: 'Brazil',
-            price: '9.99'
+            price: 9.99
           },
           {
             id: uuidv4(),
             img: 'coffee-3.jpg',
             title: 'Lava Coffee 1kg',
             country: 'Brazil',
-            price: '5.99'
+            price: 5.99
           },
         ]
       }
