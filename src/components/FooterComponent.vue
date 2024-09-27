@@ -6,11 +6,11 @@
           <ul class="footer d-flex flex-wrap">
             <nav-item
               classLink="footer__item"
-              :link="links.footer.link"
+              :link="links.main.link"
             >
               <img
-                :src="require(`@/assets/logo/${links.footer.icon}`)"
-                :alt="links.footer.icon"
+                :src="require(`@/assets/logo/Logo_black.svg`)"
+                :alt="links.main.alt"
               />
             </nav-item>
             <nav-item
@@ -34,35 +34,13 @@
 
 <script>
   import NavItem from '@/components/NavItem.vue';
+  import links from '@/mocks/links.js';
 
   export default {
     components: { NavItem },
     data() {
       return {
-        links: {
-          footer: {
-            id: 0,
-            link: "/",
-            icon: "Logo_black.svg",
-          },
-          other: [
-            {
-              id: 1,
-              link: "/our-coffee",
-              text: "Our coffee",
-            },
-            {
-              id: 2,
-              link: "/for-your-pleasure",
-              text: "For your pleasure",
-            },
-            {
-              id: 3,
-              link: "/contacts",
-              text: "Contact us",
-            },
-          ],
-        }
+        links,
       };
     },
   };
