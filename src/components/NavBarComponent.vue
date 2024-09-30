@@ -5,11 +5,11 @@
     >
       <nav-item
         classLink="header__item"
-        :link="links.main.link"
+        :link="links.header.link"
       >
         <img
-          :src="require(`@/assets/logo/Logo.svg`)"
-          :alt="links.main.alt"
+          :src="require(`@/assets/logo/${links.header.icon}`)"
+          :alt="links.header.icon"
         />
       </nav-item>
       <nav-item
@@ -25,13 +25,12 @@
 
 <script>
   import NavItem from '@/components/NavItem.vue';
-  import links from '@/mocks/links.js';
 
   export default {
     components: { NavItem },
-    data() {
-      return {
-        links,
+    computed: {
+      links() {
+        return this.$store.getters["getHeaderLinks"]
       }
     }
   };

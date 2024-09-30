@@ -49,7 +49,7 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
               <product-card
-                v-for="card in goods"
+                v-for="card in cards.goods"
                 :key="card.id"
                 :title="card.title"
                 :price="card.price"
@@ -69,21 +69,16 @@
   import ProductCard from '@/components/ProductCard.vue';
   import TitleComponent from '@/components/TitleComponent.vue';
 
-  import createGoods from '@/mocks/createGoods.js';
-
   export default {
     components: { NavBarComponent, ProductCard, TitleComponent },
     data() {
       return {
         title: 'For your pleasure',
-        goods: [
-          createGoods('Solimo Coffee Beans 2kg', 10.73),
-          createGoods('Presto Coffee Beans 1kg', 15.99),
-          createGoods('AROMISTICO Coffee 1kg', 6.99),
-          createGoods('Solid Coffee Beans 2kg', 8.73),
-          createGoods('Movep Coffee Beans 1kg', 9.99),
-          createGoods('Lava Coffee 1kg', 5.99),
-        ]
+      }
+    },
+    computed: {
+      cards() {
+        return this.$store.getters["getGoodsCards"]
       }
     }
   }

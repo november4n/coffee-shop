@@ -66,7 +66,7 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
               <product-card
-                v-for="card in bestsellers"
+                v-for="card in cards.bestsellers"
                 :key="card.id"
                 classItem="best__item"
                 :title="card.title"
@@ -90,37 +90,11 @@ import TitleComponent from '@/components/TitleComponent.vue';
 
 import { scrollIntoView } from "seamless-scroll-polyfill";
 
-import { v4 as uuidv4 } from 'uuid';
-import createGoods from '@/mocks/createGoods.js';
-
 export default {
   components: { NavBarComponent, ProductCard, TitleComponent },
   data() {
     return {
       title: 'Everything You Love About Coffee',
-      bestsellers: [
-          createGoods('Solimo Coffee Beans 2kg', 10.73, 'coffee-1.jpg'),
-          createGoods('Presto Coffee Beans 1kg', 15.99, 'coffee-2.jpg'),
-          createGoods('AROMISTICO Coffee 1kg', 6.99, 'coffee-1.jpg'),
-        // {
-        //   id: uuidv4(),
-        //   img: 'coffee-1.jpg',
-        //   title: 'Solimo Coffee Beans 2kg',
-        //   price: 10.73
-        // },
-        // {
-        //   id: uuidv4(),
-        //   img: 'coffee-2.jpg',
-        //   title: 'Presto Coffee Beans 1kg',
-        //   price: 15.99
-        // },
-        // {
-        //   id: uuidv4(),
-        //   img: 'coffee-3.jpg',
-        //   title: 'AROMISTICO Coffee 1kg',
-        //   price: 6.99
-        // },
-      ]
     }
   },
   methods: {
@@ -131,5 +105,13 @@ export default {
       });
     }
   },
+  computed: {
+    cards() {
+      return this.$store.getters["getBestCards"]
+    }
+  }
 }
 </script>
+
+
+
