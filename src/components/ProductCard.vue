@@ -1,31 +1,15 @@
 <template>
-  <div :class="classItem">
-    <img :src="require(`@/assets/img/${img}`)" :alt="img" />
-    <div :class="classItemTitle">{{ title }}</div>
-    <div v-if="country" :class="classItemCountry">{{ country }}</div>
-    <div :class="classItemPrice">{{ price }}$</div>
+  <div :class="classItem" @click="onEmmit(card.id)">
+    <img :src="require(`@/assets/img/${card.img}`)" :alt="card.img" />
+    <div :class="classItemTitle">{{ card.title }}</div>
+    <div v-if="card.country" :class="classItemCountry">{{ card.country }}</div>
+    <div :class="classItemPrice">{{ card.price | addCurrency}}</div>
   </div>
 </template>
 
 <script>
   export default {
     props: {
-      title: {
-        type: String,
-        required: true,
-      },
-      price: {
-        type: Number,
-        required: true,
-      },
-      img: {
-        type: String,
-        required: true,
-      },
-      country: {
-        type: String,
-        required: false,
-      },
       classItem: {
         type: String,
         required: false,
@@ -46,6 +30,15 @@
         required: false,
         default: "shop__item-price"
       },
+      card: {
+        type: Object,
+        required: true
+      }
+    },
+    methods: {
+      onEmmit(id) {
+        this.$emit('onNavigate', id)
+      }
     }
   }
 </script>

@@ -1,4 +1,4 @@
-import createGoods from '@/mocks/createGoods.js';
+import createGoods from '@/factories/createGoods.js';
 
 const cards = {
   state: {
@@ -22,6 +22,11 @@ const cards = {
     },
     getBestCards(state) {
       return {bestsellers: state.bestsellers}
+    },
+    getProductById(state) {
+      return (id) => {
+        return state.goods.find((card) => card.id === id)
+      }
     }
   }
 }
