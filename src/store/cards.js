@@ -3,17 +3,17 @@ import createGoods from '@/factories/createGoods.js';
 const cards = {
   state: {
     goods: [
-      createGoods('Solimo Coffee Beans 2kg', 10.73),
-      createGoods('Presto Coffee Beans 1kg', 15.99),
-      createGoods('AROMISTICO Coffee 1kg', 6.99),
-      createGoods('Solid Coffee Beans 2kg', 8.73),
-      createGoods('Movep Coffee Beans 1kg', 9.99),
-      createGoods('Lava Coffee 1kg', 5.99),
+      createGoods(1, 'Solimo Coffee Beans 2kg', 10.73),
+      createGoods(2, 'Presto Coffee Beans 1kg', 15.99),
+      createGoods(3, 'AROMISTICO Coffee 1kg', 6.99),
+      createGoods(4, 'Solid Coffee Beans 2kg', 8.73),
+      createGoods(5, 'Movep Coffee Beans 1kg', 9.99),
+      createGoods(6, 'Lava Coffee 1kg', 5.99),
     ],
     bestsellers: [
-      createGoods('Solimo Coffee Beans 2kg', 10.73, 'coffee-1.jpg'),
-      createGoods('Presto Coffee Beans 1kg', 15.99, 'coffee-2.jpg'),
-      createGoods('AROMISTICO Coffee 1kg', 6.99, 'coffee-1.jpg'),
+      createGoods(1, 'Solimo Coffee Beans 2kg', 10.73, 'coffee-1.jpg'),
+      createGoods(2, 'Presto Coffee Beans 1kg', 15.99, 'coffee-2.jpg'),
+      createGoods(3, 'AROMISTICO Coffee 1kg', 6.99, 'coffee-1.jpg'),
     ]
   },
   getters: {
@@ -25,7 +25,7 @@ const cards = {
     },
     getProductById(state) {
       return (id) => {
-        return state.goods.find((card) => card.id === id)
+        return state.goods.find((card) => card.id === +id)
       }
     }
   }

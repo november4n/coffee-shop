@@ -1,8 +1,6 @@
-import { v4 as uuidv4 } from 'uuid';
-
-function createGoods(title, price, img = 'coffee-3.jpg', country = 'Brazil') {
+function createGoods(id, title, price, img = 'coffee-3.jpg', country = 'Brazil') {
   return {
-    id: uuidv4(),
+    id,
     title,
     price,
     img,
