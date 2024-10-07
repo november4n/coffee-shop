@@ -1,9 +1,9 @@
 <template>
   <div :class="classItem" @click="onEmmit(card.id)">
-    <img :src="require(`@/assets/img/${card.img}`)" :alt="card.img" />
-    <div :class="classItemTitle">{{ card.title }}</div>
+    <img :src="card.image" :alt="card.image" />
+    <div :class="classItemTitle">{{ card.name }}</div>
     <div v-if="card.country" :class="classItemCountry">{{ card.country }}</div>
-    <div :class="classItemPrice">{{ card.price | addCurrency}}</div>
+    <div :class="classItemPrice">{{ card.price }}</div>
   </div>
 </template>
 

@@ -1,27 +1,40 @@
-import createGoods from '@/factories/createGoods.js';
-
 const cards = {
   state: {
-    goods: [
-      createGoods(1, 'Solimo Coffee Beans 2kg', 10.73),
-      createGoods(2, 'Presto Coffee Beans 1kg', 15.99),
-      createGoods(3, 'AROMISTICO Coffee 1kg', 6.99),
-      createGoods(4, 'Solid Coffee Beans 2kg', 8.73),
-      createGoods(5, 'Movep Coffee Beans 1kg', 9.99),
-      createGoods(6, 'Lava Coffee 1kg', 5.99),
-    ],
-    bestsellers: [
-      createGoods(1, 'Solimo Coffee Beans 2kg', 10.73, 'coffee-1.jpg'),
-      createGoods(2, 'Presto Coffee Beans 1kg', 15.99, 'coffee-2.jpg'),
-      createGoods(3, 'AROMISTICO Coffee 1kg', 6.99, 'coffee-1.jpg'),
-    ]
+    coffee: [],
+    bestsellers: [],
+    goods: [],
+  },
+  mutations: {
+    setCoffeeData(state, data) {
+      state.coffee = data
+    },
+    setBestData(state, data) {
+      state.bestsellers = data
+    },
+    setGoodsData(state, data) {
+      state.goods = data
+    },
+  },
+  actions: {
+    setCoffeeData({commit}, data) {
+      commit('setCoffeeData', data)
+    },
+    setBestData({commit}, data) {
+      commit('setBestData', data)
+    },
+    setGoodsData({commit}, data) {
+      commit('setGoodsData', data)
+    }
   },
   getters: {
-    getGoodsCards(state) {
-      return {goods: state.goods}
+    getCoffeeCards(state) {
+      return {coffee: state.coffee}
     },
     getBestCards(state) {
       return {bestsellers: state.bestsellers}
+    },
+    getGoodsCards(state) {
+      return {goods: state.goods}
     },
     getProductById(state) {
       return (id) => {

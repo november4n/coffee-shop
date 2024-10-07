@@ -179,15 +179,36 @@ export default {
       const isFormCorrect = await this.v$.$validate();
       if (!isFormCorrect || !this.offer) return;
 
-      console.log({
+      const message = {
         name: this.name,
         email: this.email,
         phone: this.phone,
         message: this.message,
         offer: this.offer,
-      });
-      // console.log(this.form);
+      }
+
+      fetch('http://localhost:3000/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(message)
+      })
+      .then(() => {
+        this.resetForm();
+      })
+      .catch(error => {
+        console.error('Ошибка при отправке:', error);
+      })
     },
+    resetForm() {
+      this.name = "";
+      this.email = "";
+      this.phone = "";
+      this.message = "";
+
+      this.v$.$reset();
+    }
   },
 };
 </script>

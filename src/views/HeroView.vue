@@ -60,7 +60,7 @@
       </div>
     </section>
     <section class="best">
-      <div class="container">
+      <div class="container" v-if="!isLoading">
         <div class="title" ref="ourBest">Our best</div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
@@ -77,39 +77,51 @@
           </div>
         </div>
       </div>
+      <spinner-component v-else></spinner-component>
     </section>
   </main>
 </template>
 
 <script>
-import NavBarComponent from '@/components/NavBarComponent.vue';
-import ProductCard from '@/components/ProductCard.vue';
-import TitleComponent from '@/components/TitleComponent.vue';
+import NavBarComponent from "@/components/NavBarComponent.vue";
+import ProductCard from "@/components/ProductCard.vue";
+import TitleComponent from "@/components/TitleComponent.vue";
+import SpinnerComponent from '../components/SpinnerComponent.vue'
+
+import { preloader } from '@/mixins/preloader';
 
 import { scrollIntoView } from "seamless-scroll-polyfill";
 
 export default {
-  components: { NavBarComponent, ProductCard, TitleComponent },
+  components: { NavBarComponent, ProductCard, TitleComponent, SpinnerComponent },
   data() {
     return {
-      title: 'Everything You Love About Coffee',
-    }
+      title: "Everything You Love About Coffee",
+    };
   },
   methods: {
     smoothScroll() {
       scrollIntoView(this.$refs.ourBest, {
         behavior: "smooth",
-        block: "start"
+        block: "start",
       });
-    }
+    },
   },
   computed: {
     cards() {
-      return this.$store.getters["getBestCards"]
-    }
-  }
-}
+      return this.$store.getters["getBestCards"];
+    },
+  },
+  mixins: [preloader],
+  mounted() {
+    fetch("http://localhost:3000/bestsellers")
+      .then((response) => response.json())
+      .then((data) => {
+        setTimeout(() => {
+          this.$store.dispatch("setBestData", data);
+          this.deleteLoader();
+        }, 1500)
+      });
+  },
+};
 </script>
-
-
-
