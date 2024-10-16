@@ -66,7 +66,7 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
               <product-card
-                v-for="card in cards.bestsellers"
+                v-for="card in cards"
                 :key="card.id"
                 classItem="best__item"
                 classItemTitle="best__item-title"
@@ -113,15 +113,16 @@ export default {
     },
   },
   mixins: [preloader],
-  mounted() {
-    fetch("http://localhost:3000/bestsellers")
-      .then((response) => response.json())
-      .then((data) => {
-        setTimeout(() => {
-          this.$store.dispatch("setBestData", data);
-          this.deleteLoader();
-        }, 1500)
-      });
+  async mounted() {
+    try {
+      let response = await fetch("http://localhost:3000/bestsellers");
+      let data = await response.json();
+      setTimeout(() => {
+          this.$store.dispatch("setBestData", data), this.deleteLoader();
+        }, 1500);
+    } catch (err) {
+      console.error('Ошибка при получении данных')
+    }
   },
 };
 </script>

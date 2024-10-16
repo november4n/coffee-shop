@@ -49,7 +49,7 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper" v-if="!isLoading">
               <product-card
-                v-for="card in cards.goods"
+                v-for="card in cards"
                 :key="card.id"
                 :card="card"
                 @onNavigate="navigate"
@@ -87,15 +87,16 @@
       },
     },
     mixins: [navigate, preloader],
-    mounted() {
-      fetch("http://localhost:3000/goods")
-        .then((response) => response.json())
-        .then((data) => {
-          setTimeout(() => {
-            this.$store.dispatch("setGoodsData", data);
-            this.deleteLoader();
-          }, 1500)
-        });
-    },
+    async mounted() {
+    try {
+      let response = await fetch("http://localhost:3000/goods");
+      let data = await response.json();
+      setTimeout(() => {
+          this.$store.dispatch("setGoodsData", data), this.deleteLoader();
+        }, 1500);
+    } catch (err) {
+      console.error('Ошибка при получении данных')
+    }
+  },
   }
 </script>
